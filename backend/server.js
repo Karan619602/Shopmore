@@ -14,7 +14,9 @@ import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
 import dotenv  from 'dotenv';
 import path from 'path';
-import cors from 'cors'
+import { fileURLToPath } from 'url';
+
+import cors from 'cors';
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({extended:true}))
@@ -23,6 +25,10 @@ app.use(cors());
 app.use(fileUpload());
 
 // dotenv.config({ path: 'backend/config/config.env' })
+//const __dirname=path.resolve()
+
+const __filename=fileURLToPath(import.meta.url)
+const __dirname=path.dirname(__filename)
 
 if (process.env.NODE_ENV !== 'PRODUCTION') 
 {dotenv.config({ path: 'backend/config/config.env' })}
