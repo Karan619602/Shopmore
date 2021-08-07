@@ -66,5 +66,14 @@ export const logout= catchasyncerror(async (req,res,next)=>{
     })
 })
 
+//get currently logged user details =>/api/v1/me
 
+export const getUserprofile=catchasyncerror(async (req,res,next)=>{
+    const user= await User.findById(req.user.id);
+    
+    res.status(200).json({
+        success:true,
+        user
+    })
+    })
 
