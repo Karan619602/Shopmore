@@ -12,7 +12,7 @@ export const getproducts=(keyword='',currentPage=1)=>async (dispatch)=>{
    dispatch({type:ALL_PRODUCTS_REQUESTS})
    
    
-     const {data}= await axios.get(`http://localhost:8000/api/v1/products?keyword=${keyword}&page=${currentPage}`)
+     const {data}= await axios.get(`/api/v1/products?keyword=${keyword}&page=${currentPage}`)
      dispatch({type:ALL_PRODUCTS_SUCCESS,
              payload:data
     })
@@ -33,7 +33,7 @@ export const getproductsDetails=(id)=>async (dispatch)=>{
    dispatch({type:ALL_PRODUCTS_DETAILS_REQUESTS})
    
    
-     const {data}= await axios.get(`http://localhost:8000/api/v1/product/${id}`)
+     const {data}= await axios.get(`/api/v1/product/${id}`)
      dispatch({type:ALL_PRODUCTS_DETAILS_SUCCESS,
              payload:data.product
     })
