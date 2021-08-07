@@ -1,4 +1,4 @@
-import Errorhandling from '../error/errorhandling/js'
+import Errorhandling from '../error/errorhandling.js'
 
 
  const errormiddleware =(err,req,res,next)=>{
