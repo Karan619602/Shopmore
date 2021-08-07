@@ -67,11 +67,11 @@ export const logout= catchasyncerror(async (req,res,next)=>{
 })
 
 //forgot password 
-export const forgotpassword=catchasyncerror(async (req,res,next)=>{
-    const user= await User.findOne({email:req.body.email});
-    if(!user){
-        return next(new Errorhandling('user not found with this email',500))
-    } 
+// export const forgotpassword=catchasyncerror(async (req,res,next)=>{
+//     const user= await User.findOne({email:req.body.email});
+//     if(!user){
+//         return next(new Errorhandling('user not found with this email',500))
+//     } 
 
 //     //get reset token
 //     const resetToken =user.getResetPasswordToken();
