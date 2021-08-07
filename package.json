@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "description": "e commerce store",
   "main": "server.js",
-  "type":  "module",
-    "scripts": {
+  "type": "module",
+  "scripts": {
     "start": "nodemon backend/server.js",
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
     "prod": "SET NODE_ENV=PRODUCTION & nodemon backend/server",
-    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
-
-    
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.11",
     "nodemailer": "^6.6.2",
+    "path": "^0.12.7",
     "stripe": "^8.167.0",
     "validator": "^13.6.0"
   },
