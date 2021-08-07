@@ -103,30 +103,30 @@ export const logout= catchasyncerror(async (req,res,next)=>{
 // })
 
 //reset password=>api/v1/password/reset/:token
-export const resetpassword=catchasyncerror(async (req,res,next)=>{
-    //hash url token
-    const resetPasswordToken=  crypto.createHash('sha256').update(req.params.token).digest('hex');
-    const user= await User.findOne({
-        resetPasswordToken,
-        resetPasswordExpire:{$gt:Date.now()}
+// export const resetpassword=catchasyncerror(async (req,res,next)=>{
+//     //hash url token
+//     const resetPasswordToken=  crypto.createHash('sha256').update(req.params.token).digest('hex');
+//     const user= await User.findOne({
+//         resetPasswordToken,
+//         resetPasswordExpire:{$gt:Date.now()}
 
-    })
-    if(!user){
-        return next(new Errorhandling("password reset token is invalid",400))
-    }
-    if(req.body.password!==req.body.confirmpassword){
-        return next(new Errorhandling("password does not  match",400))
+//     })
+//     if(!user){
+//         return next(new Errorhandling("password reset token is invalid",400))
+//     }
+//     if(req.body.password!==req.body.confirmpassword){
+//         return next(new Errorhandling("password does not  match",400))
 
-    }
-    //save new password
-    user.password=req.body.password
-    user.resetPasswordToken=undefined;
-    user.resetPasswordExpire=undefined;
+//     }
+//     //save new password
+//     user.password=req.body.password
+//     user.resetPasswordToken=undefined;
+//     user.resetPasswordExpire=undefined;
 
-    await user.save();
-    sendToken(user,200,res)
+//     await user.save();
+//     sendToken(user,200,res)
 
-})
+// })
 
 
 //get currently logged user details =>/api/v1/me
