@@ -1,5 +1,5 @@
 
-import  {config} from 'dotenv';
+import  dotenv from 'dotenv';
 
 
 import express from 'express';
@@ -23,7 +23,7 @@ app.use(fileUpload());
 
 
 if (process.env.NODE_ENV !== 'PRODUCTION') 
-{config({ path: 'backend/config/config.env' })}
+{dotenv.config({ path: 'backend/config/config.env' })}
 //handle uncaught error
 process.on("uncaughtException",err=>{
     console.log(`ERROR: ${err.stack}`);
@@ -31,8 +31,6 @@ process.on("uncaughtException",err=>{
     process.exit(1);
 })
 
-if (process.env.NODE_ENV !== 'PRODUCTION') 
-{dotenv.config({ path: 'backend/config/config.env' })}
 
 connectdatabase();
 //cloudinary config
