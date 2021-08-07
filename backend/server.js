@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
     app.use(express.static(path.join('../frontend/build'))) 
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve('../frontend/build/index.html'))
+        res.sendFile(path.join('../frontend/build/index.html'))
     })
 }
 app.use(errormiddleware);
