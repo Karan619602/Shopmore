@@ -73,34 +73,34 @@ export const forgotpassword=catchasyncerror(async (req,res,next)=>{
         return next(new Errorhandling('user not found with this email',500))
     } 
 
-    //get reset token
-    const resetToken =user.getResetPasswordToken();
-    await user.save({validateBeforeSave:false})
+//     //get reset token
+//     const resetToken =user.getResetPasswordToken();
+//     await user.save({validateBeforeSave:false})
 
-    const resetUrl= `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
-    const message=`Your password reset token is as follow:\n\n${resetUrl}\n\nif not requested this email ,then ignore it`
+//     const resetUrl= `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+//     const message=`Your password reset token is as follow:\n\n${resetUrl}\n\nif not requested this email ,then ignore it`
 
-    try {
-        await sendEmail({
-            email:user.email,
-            subject:'shopit password recovery',
-            message
-        })
+//     try {
+//         await sendEmail({
+//             email:user.email,
+//             subject:'shopit password recovery',
+//             message
+//         })
 
-        res.status(200).json({
-            success:true,
-            message:`email sent to :${user.email}`
-        })
-    } catch (error) {
-        user.resetPasswordToken=undefined;
-        user.resetPasswordExpire=undefined;
+//         res.status(200).json({
+//             success:true,
+//             message:`email sent to :${user.email}`
+//         })
+//     } catch (error) {
+//         user.resetPasswordToken=undefined;
+//         user.resetPasswordExpire=undefined;
 
-        await user.save({validateBeforeSave:false})
+//         await user.save({validateBeforeSave:false})
 
-        return next(Errorhandling(error.message,500))
-    }
+//         return next(Errorhandling(error.message,500))
+//     }
 
-})
+// })
 
 //reset password=>api/v1/password/reset/:token
 export const resetpassword=catchasyncerror(async (req,res,next)=>{
