@@ -1,5 +1,12 @@
 
+import  {config} from 'dotenv';
+
+if (process.env.NODE_ENV !== 'PRODUCTION') 
+
+{config({ path: 'backend/config/config.env' })}
+
 import express from 'express';
+
 const app=express();
 import connectdatabase from './config/database.js';
 import errormiddleware from './middlewares/errors.js'
@@ -7,7 +14,7 @@ import bodyParser from 'body-parser';
 import  cloudinary  from 'cloudinary';
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
-import { config } from 'dotenv';
+
 import path from 'path';
 import cors from 'cors'
 app.use(express.json());
@@ -18,7 +25,8 @@ app.use(cors());
 app.use(fileUpload());
 
 
-
+if (process.env.NODE_ENV !== 'PRODUCTION') 
+{dotenv.config({ path: 'backend/config/config.env' })}
 //handle uncaught error
 process.on("uncaughtException",err=>{
     console.log(`ERROR: ${err.stack}`);
@@ -26,7 +34,8 @@ process.on("uncaughtException",err=>{
     process.exit(1);
 })
 
-config({path: 'backend/config/config.env'})
+// if (process.env.NODE_ENV !== 'PRODUCTION') 
+// {dotenv.config({ path: 'backend/config/config.env' })}
 
 connectdatabase();
 //cloudinary config
@@ -51,7 +60,7 @@ app.use('/api/v1',payment);
 app.use('/api/v1',orders);
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')))
+    app.use(express.static('../frontend/build'))
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
