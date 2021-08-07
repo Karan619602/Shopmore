@@ -1,6 +1,4 @@
 import React, { Fragment, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-
 import Metadata from '../layout/Metaata'
 import {Loader} from '../layout/loader'
 import { MDBDataTable } from 'mdbreact'
@@ -47,15 +45,12 @@ const Orders=()=>{
                     label: 'Status',
                     field: 'status',
                     sort: 'asc'
-                },
-                {
-                    label: 'Actions',
-                    field: 'actions',
-                    sort: 'asc'
-                },
+                }
             ],
             rows: []
         }
+
+
 
         orders.forEach(order => {
             data.rows.push({
@@ -65,10 +60,9 @@ const Orders=()=>{
                 status: order.orderStatus && String(order.orderStatus).includes('Delivered')
                     ? <p style={{ color: 'green' }}>{order.orderStatus}</p>
                     : <p style={{ color: 'red' }}>{order.orderStatus}</p>,
-                actions:
-                    <Link to={`/order/${order._id}`} className="btn btn-primary">
-                        <i className="fa fa-eye"></i>
-                    </Link>
+                    
+
+                
             })
         })
 
