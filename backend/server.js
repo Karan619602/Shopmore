@@ -1,10 +1,4 @@
-
-
-
-
-
 import express from 'express';
-
 const app=express();
 import connectdatabase from './config/database.js';
 import errormiddleware from './middlewares/errors.js'
@@ -24,8 +18,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(fileUpload());
 
-// dotenv.config({ path: 'backend/config/config.env' })
-//const __dirname=path.resolve()
+
 
 const __filename=fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename)
