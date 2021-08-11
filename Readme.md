@@ -20,8 +20,8 @@ it is an e-commerce website where user  can see products listing ,add products i
 
 
 # Install Dependencies(backend)
- cd backend 
- npm i
+ #cd backend 
+ #npm i
 
 Demo video link:-https://youtu.be/V9F-G3zw-7o
 App link:- https://shopmorefromit.herokuapp.com
