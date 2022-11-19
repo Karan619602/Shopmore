@@ -72,7 +72,7 @@ export const ProductDetails=({match,history})=>{
             </div>
 
             <div className="col-12 col-lg-5 mt-5">
-                <h3>onn. 32” className HD (720P) LED Roku Smart TV (100012589)</h3>
+                <h3>{product.name}</h3>
                 <p id="product_id">Product # {product._id}</p>
 
                
