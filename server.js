@@ -1,7 +1,7 @@
 import express from 'express';
 const app=express();
-import connectdatabase from './config/database.js';
-import errormiddleware from './middlewares/errors.js'
+import connectdatabase from './backend/config/database.js';
+import errormiddleware from './backend/middlewares/errors.js'
 import bodyParser from 'body-parser';
 import  cloudinary  from 'cloudinary';
 import cookieParser from 'cookie-parser';
@@ -37,11 +37,11 @@ process.on("uncaughtException",err=>{
 connectdatabase();
 
 
-import products from './routers/products.js';
-import users from './routers/usersroutes.js';
-import payment from './routers/payment.js';
+import products from './backend/routers/products.js';
+import users from './backend/routers/usersroutes.js';
+import payment from './backend/routers/payment.js';
 
-import orders from './routers/orderroutes.js';
+import orders from './backend/routers/orderroutes.js';
 
 
 
@@ -51,13 +51,13 @@ app.use('/api/v1',users);
 app.use('/api/v1',payment);
 app.use('/api/v1',orders);
 
-// if (process.env.NODE_ENV === 'PRODUCTION') {
-//     app.use(express.static(path.join(__dirname,'../frontend/build'))) 
+if (process.env.NODE_ENV === 'PRODUCTION') {
+    app.use(express.static(path.join("frontend,build"))) 
 
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname,'../frontend/build/index.html'))
-//     })
-// }
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
+    })
+}
 app.use(errormiddleware);
 
 

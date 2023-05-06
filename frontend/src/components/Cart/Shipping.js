@@ -19,7 +19,11 @@ const Shipping = ({history}) => {
     const submithandler=(e)=>{
         e.preventDefault();
         dispatch(saveshippinginfo({address,city,postalCode,phoneNo}))
+    }
+    const handleclick=()=>{
+       
         history.push('/payment')
+
     }
 
 
@@ -85,6 +89,7 @@ const Shipping = ({history}) => {
                             id="shipping_btn"
                             type="submit"
                             className="btn btn-block py-3"
+                            onClick={handleclick}
                         >
 Proceed to pay ₹{cartItems.reduce((prevvalue,item)=>prevvalue+item.quantity*item.price,0).toFixed(2)}
                             </button>

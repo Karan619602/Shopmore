@@ -26,14 +26,14 @@ const Payment=({history})=>{
     const{error}=useSelector(state=>state.neworder)
 
 
-    useEffect(()=>{
-        if(error){
-            alert.error(error);
-            console.log(error);
-            dispatch(clearerrors())
-        }
+    // useEffect(()=>{
+    //     if(error){
+    //         alert.error(error);
+    //         console.log(error);
+    //         dispatch(clearerrors())
+    //     }
 
-    },[alert,dispatch,error])
+    // },[alert,dispatch,error])
 
     const order={
         orderItems:cartItems,
