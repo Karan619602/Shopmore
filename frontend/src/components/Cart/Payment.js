@@ -91,8 +91,9 @@ const Payment=({history})=>{
                       id: result.paymentIntent.id,
                       status: result.paymentIntent.status
                   }
-
+                  console.log("order",order);
                   dispatch(createOrder(order))
+                  
                   alert.success('Order Placed Succesfully')
                   history.push('/');
                  
