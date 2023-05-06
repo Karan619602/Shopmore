@@ -61,9 +61,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 app.use(errormiddleware);
 
 
-app.get('/',(req,res)=>{
-    res.send("hello world");
-})
+
 
 const port =process.env.PORT||8000
 const server=app.listen(port,(err)=>{
