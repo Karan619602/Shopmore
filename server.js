@@ -56,7 +56,7 @@ app.use('/api/v1',orders);
 if (process.env.NODE_ENV === 'PRODUCTION') {
     app.use(express.static(path.resolve("frontend","build"))) 
 
-    app.get('/', (req, res) => {
+    app.get("*", (req, res) => {
         res.sendFile(path.resolve("frontend","build","index.html"))
     })
 }
