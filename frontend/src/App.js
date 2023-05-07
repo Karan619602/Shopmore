@@ -20,22 +20,30 @@ import store from './store'
 import axios from 'axios';
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
+import { useSelector } from 'react-redux'
+
 
 function App() {
-
+ 
+  const { user, loading } = useSelector(state => state.auth)
 
   const [stripeApiKey, setStripeApiKey] = useState('');
-  useEffect(()=>{
-    store.dispatch(loaduser())
-
-    async function getStripApiKey() {
+  async function getStripApiKey() {
       
-   let {data}= await axios.get('api/v1/secretapi')
-      setStripeApiKey(data.secretapi)
-    }
+    let {data}= await axios.get('api/v1/secretapi')
+       setStripeApiKey(data.secretapi)
+     }
+     useEffect(() =>{
+  
+      store.dispatch(loaduser())
+   },[])
+  useEffect(() =>{
+   
 
-    getStripApiKey();
-  },[])
+    
+     getStripApiKey();
+console.log("user:",user);
+  },[user])
   return (
   <Router>
      <div className="App">
