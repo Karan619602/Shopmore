@@ -24,9 +24,9 @@ import { useSelector } from 'react-redux'
 
 
 function App() {
- 
+ console.log("start");
   const { user, loading } = useSelector(state => state.auth)
-
+  console.log("user:",user);
   const [stripeApiKey, setStripeApiKey] = useState('');
   async function getStripApiKey() {
       
@@ -34,16 +34,16 @@ function App() {
        setStripeApiKey(data.secretapi)
      }
      useEffect(() =>{
-  
-      store.dispatch(loaduser())
-   },[])
-  useEffect(() =>{
    
 
     
-     getStripApiKey();
-console.log("user:",user);
-  },[user])
+      getStripApiKey();
+   },[user])
+     useEffect(() =>{
+  
+      store.dispatch(loaduser())
+   },[])
+ 
   return (
   <Router>
      <div className="App">
