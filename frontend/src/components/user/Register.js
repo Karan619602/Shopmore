@@ -33,10 +33,7 @@ export const Register=({history})=>{
         e.preventDefault();
 
        
-       console.log(name);
-       console.log(email);
-       console.log(password);
-        
+      
         dispatch(register(name,email,password))
     }
 

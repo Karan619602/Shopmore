@@ -64,7 +64,6 @@ const Payment=({history})=>{
 
           const clientSecret = res.data.client_secret;
 
-          console.log(clientSecret);
 
           if (!stripe || !elements) {
               return;
@@ -91,7 +90,6 @@ const Payment=({history})=>{
                       id: result.paymentIntent.id,
                       status: result.paymentIntent.status
                   }
-                  console.log("order",order);
                   dispatch(createOrder(order))
                   
                   alert.success('Order Placed Succesfully')
